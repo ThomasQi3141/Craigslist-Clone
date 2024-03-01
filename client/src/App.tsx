@@ -1,24 +1,22 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Create from "./pages/Create";
+import NoPage from "./pages/NoPage";
 import "./App.css";
 
 function App() {
-  //Navigate through webpages on click
-  const navigate = useNavigate();
-  const toCreate = () => {
-    navigate("/create");
-  };
-
   return (
-    <>
-      <button
-        onClick={() => {
-          toCreate();
-        }}
-      >
-        Create
-      </button>
-    </>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="*" element={<NoPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
