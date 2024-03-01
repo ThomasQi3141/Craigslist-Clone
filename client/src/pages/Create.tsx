@@ -1,11 +1,18 @@
 import { useState } from "react";
+import { storage } from "../firebase";
 
 const Create = () => {
   const [val, setVal] = useState("");
+  const [imageUpload, setImageUpload] = useState<File | null>(null);
   const handleChange = (event: any) => {
     setVal(event.target.value);
   };
-  const submit = () => {};
+  const submit = () => {
+    if (imageUpload == null) {
+      //Didn't select images
+      return;
+    }
+  };
   return (
     <div>
       <input
@@ -20,7 +27,12 @@ const Create = () => {
         placeholder="Description"
         className="descriptionInput"
       />
-      <input type="file" />
+      <input
+        type="file"
+        onChange={(event) => {
+          setImageUpload(event.target.files![0]);
+        }}
+      />
       <button onClick={submit}>Submit</button>
     </div>
   );

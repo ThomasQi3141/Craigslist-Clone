@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "craigslist-clone-17738",
   storageBucket: "craigslist-clone-17738.appspot.com",
   messagingSenderId: "129823859062",
-  appId: "1:129823859062:web:732d4af8b068d10cf51a57"
+  appId: "1:129823859062:web:732d4af8b068d10cf51a57",
 };
 
 // Initialize Firebase
