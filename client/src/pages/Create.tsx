@@ -47,38 +47,48 @@ const Create = () => {
     navigate("/");
   };
   return (
-    <div className="flex justify-center">
-      <div>
-        <h1 className="text-xl">Create a listing</h1>
-        <div className="grid grid-cols-2 gap-4">
-          <div>Name</div>
-          <input
-            type="text"
-            placeholder="School Name"
-            onChange={handleNameChange}
-            value={name}
-            className="schoolNameInput border-solid border-gray-600 border rounded"
-          />
-          <div>About</div>
-          <textarea
-            placeholder="Description"
-            onChange={handleDescriptionChange}
-            value={description}
-            className="descriptionInput border-solid border-gray-600 border rounded"
-          />
-          <div>Image</div>
-          <input type="file" onChange={handleImageChange} />
-        </div>
-        <div className="flex items-end">
-          <button
-            onClick={submit}
-            className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto"
-          >
-            Submit
-          </button>
+    <>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+        className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto"
+      >
+        Back
+      </button>
+      <div className="flex justify-center">
+        <div>
+          <h1 className="text-xl">Create a listing</h1>
+          <div className="grid grid-cols-2 gap-4">
+            <div>Name</div>
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={handleNameChange}
+              value={name}
+              className="schoolNameInput border-solid border-gray-600 border rounded"
+            />
+            <div>About</div>
+            <textarea
+              placeholder="Description"
+              onChange={handleDescriptionChange}
+              value={description}
+              className="descriptionInput border-solid border-gray-600 border rounded"
+            />
+            <div>Image</div>
+            <input type="file" onChange={handleImageChange} />
+          </div>
+          <div className="flex items-end">
+            <button
+              onClick={submit}
+              className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto"
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
