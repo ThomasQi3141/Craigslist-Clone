@@ -5,6 +5,7 @@ const Create = () => {
   const handleChange = (event: any) => {
     setVal(event.target.value);
   };
+  const submit = () => {};
   return (
     <div>
       <input
@@ -19,7 +20,8 @@ const Create = () => {
         placeholder="Description"
         className="descriptionInput"
       />
-      <button>Bruh</button>
+      <input type="file" />
+      <button onClick={submit}>Submit</button>
     </div>
   );
 };
