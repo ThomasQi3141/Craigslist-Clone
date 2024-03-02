@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Create from "./pages/Create";
 import NoPage from "./pages/NoPage";
-import "./App.css";
 
 function App() {
   return (
