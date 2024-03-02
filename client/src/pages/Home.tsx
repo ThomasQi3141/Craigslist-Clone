@@ -28,12 +28,16 @@ const Home = () => {
 
   return (
     <div>
-      <button
-        onClick={toCreate}
-        className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto"
-      >
-        Create
-      </button>
+      <div className="flex p-5 align-middle shadow-lg rounded-lg">
+        <div className="font-bold text-4xl">Home</div>
+        <button
+          onClick={toCreate}
+          className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto px-5 "
+        >
+          Create
+        </button>
+      </div>
+
       {imageList.map((url) => {
         return <img src={url} />;
       })}

@@ -48,17 +48,21 @@ const Create = () => {
   };
   return (
     <>
-      <button
-        onClick={() => {
-          navigate("/");
-        }}
-        className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto"
-      >
-        Back
-      </button>
+      <div className="p-5">
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto "
+        >
+          Back
+        </button>
+      </div>
       <div className="flex justify-center">
         <div>
-          <h1 className="text-xl">Create a listing</h1>
+          <h1 className="text-2xl text-blue-900 my-10 font-bold">
+            Create a listing
+          </h1>
           <div className="grid grid-cols-2 gap-4">
             <div>Name</div>
             <input
@@ -76,12 +80,12 @@ const Create = () => {
               className="descriptionInput border-solid border-gray-600 border rounded"
             />
             <div>Image</div>
-            <input type="file" onChange={handleImageChange} />
+            <input type="file" onChange={handleImageChange} className="" />
           </div>
           <div className="flex items-end">
             <button
               onClick={submit}
-              className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto"
+              className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto my-3"
             >
               Submit
             </button>
