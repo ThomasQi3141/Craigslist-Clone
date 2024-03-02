@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect } from "react";
 import { firestoreDB } from "../firebase";
 import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
@@ -16,7 +16,8 @@ const Home = () => {
   const edit = () => {};
 
   const [documents, setDocuments] = useState<any[]>([]);
-  const [trigger, setTrigger] = useState(false);
+  // const [trigger, setTrigger] = useState(false);
+  const [currentDocument, setCurrentDocument] = useState<any>(null);
   // Define a function to fetch documents
   const fetchDocuments = async () => {
     try {
@@ -34,6 +35,7 @@ const Home = () => {
   useEffect(() => {
     // Call the fetchDocuments function when the component mounts
     fetchDocuments();
+    console.log("Fetched");
   }, []);
 
   return (
@@ -60,8 +62,7 @@ const Home = () => {
           <div>
             <a
               onClick={() => {
-                setTrigger(true);
-                console.log("clicked");
+                setCurrentDocument(document);
               }}
             >
               <div className="image-div flex">
@@ -76,13 +77,19 @@ const Home = () => {
                 />
               </div>
             </a>
-            <Popup trigger={trigger} setTrigger={setTrigger}>
-              <h3 className="font-bold">{document.name}</h3>
-              <p>{document.description}</p>
-            </Popup>
           </div>
         );
       })}
+      {currentDocument && (
+        <Popup
+          onClose={() => {
+            setCurrentDocument(null);
+          }}
+        >
+          <h3 className="font-bold">{currentDocument.name}</h3>
+          <p>{currentDocument.description}</p>
+        </Popup>
+      )}
     </div>
   );
 };

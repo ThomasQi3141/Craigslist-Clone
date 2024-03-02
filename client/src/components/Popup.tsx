@@ -1,22 +1,25 @@
 import "./Popup.css";
 
-const Popup = (props: any) => {
-  return props.trigger ? (
+interface Props {
+  children: React.ReactNode;
+  onClose: () => void;
+}
+
+const Popup = ({ onClose, children }: Props) => {
+  return (
     <div className="popup">
       <div className="popup-inner rounded-lg">
         <button
           onClick={() => {
-            props.setTrigger(false);
+            onClose();
           }}
           className="close-button"
         >
           X
         </button>
-        {props.children}
+        {children}
       </div>
     </div>
-  ) : (
-    ""
   );
 };
 

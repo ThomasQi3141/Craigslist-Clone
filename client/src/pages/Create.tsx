@@ -41,9 +41,14 @@ const Create = () => {
     // add image url to JSON
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((item) => {
-      getDownloadURL(item.ref).then((url) => {
-        uploadData(url);
-      });
+      getDownloadURL(item.ref)
+        .then((url) => {
+          uploadData(url);
+        })
+        .then(() => {
+          alert("Submission Successful");
+          navigate("/");
+        });
     });
 
     const uploadData = async (url: string) => {
@@ -60,8 +65,6 @@ const Create = () => {
         console.log(error);
       }
     };
-    alert("Submission Successful");
-    navigate("/");
   };
 
   return (
