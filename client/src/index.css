@@ -19,3 +19,8 @@ height: 200px;
 object-fit: cover;
 object-position: 25% 25%; 
 }
+
+p {
+  inline-size: 1000px;
+  overflow-wrap: break-word;
+}

@@ -1,17 +1,20 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect, useReducer } from "react";
 import { firestoreDB } from "../firebase";
 import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
 
 const Home = () => {
-  //Navigate through webpages on click
+  // Navigate through webpages on click
   const navigate = useNavigate();
+  // Navigates to create page
   const toCreate = () => {
     navigate("/create");
   };
 
   const [documents, setDocuments] = useState<any[]>([]);
+
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
     // Define a function to fetch documents
@@ -48,18 +51,16 @@ const Home = () => {
 
       {documents.map((document) => {
         return (
-          <div className="image-div">
-            <div className="flex ">
+          <div className="image-div flex">
+            <div className="absolute translate-x-80">
               <h2 className="text-2xl ml-auto">{document.name}</h2>
-              <p>{document.description}</p>
+              <p className="mr-5">{document.description}</p>
             </div>
-            <div>
-              <img
-                src={document.imageURL}
-                width="200"
-                className="thumbnail-image rounded-lg"
-              />
-            </div>
+            <img
+              src={document.imageURL}
+              width="200"
+              className="thumbnail-image rounded-lg"
+            />
           </div>
         );
       })}

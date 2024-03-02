@@ -60,7 +60,6 @@ const Create = () => {
         console.log(error);
       }
     };
-
     alert("Submission Successful");
     navigate("/");
   };
