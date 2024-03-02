@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect, useReducer } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { firestoreDB } from "../firebase";
 import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
@@ -7,30 +7,29 @@ import { collection } from "firebase/firestore";
 const Home = () => {
   // Navigate through webpages on click
   const navigate = useNavigate();
+  const location = useLocation();
   // Navigates to create page
   const toCreate = () => {
     navigate("/create");
   };
-
   const [documents, setDocuments] = useState<any[]>([]);
-
-  const [, forceUpdate] = useReducer((x) => x + 1, 0);
-
+  // Define a function to fetch documents
+  const fetchDocuments = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(firestoreDB, "Items"));
+      const documentsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setDocuments(documentsData);
+    } catch (error) {
+      console.error("Error fetching documents: ", error);
+    }
+  };
+  if (typeof window !== "undefined") {
+    fetchDocuments();
+  }
   useEffect(() => {
-    // Define a function to fetch documents
-    const fetchDocuments = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(firestoreDB, "Items"));
-        const documentsData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setDocuments(documentsData);
-      } catch (error) {
-        console.error("Error fetching documents: ", error);
-      }
-    };
-
     // Call the fetchDocuments function when the component mounts
     fetchDocuments();
   }, []);
