@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import { firestoreDB } from "../firebase";
 import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
@@ -12,6 +12,9 @@ const Home = () => {
   const toCreate = () => {
     navigate("/create");
   };
+
+  const edit = () => {};
+
   const [documents, setDocuments] = useState<any[]>([]);
   const [trigger, setTrigger] = useState(false);
   // Define a function to fetch documents
@@ -27,9 +30,12 @@ const Home = () => {
       console.error("Error fetching documents: ", error);
     }
   };
-  if (typeof window !== "undefined") {
-    fetchDocuments();
-  }
+
+  // if (typeof window !== "undefined") {
+  //   fetchDocuments();
+  //   forceUpdate();
+  //   console.log("page refreshed");
+  // }
   useEffect(() => {
     // Call the fetchDocuments function when the component mounts
     fetchDocuments();
@@ -37,16 +43,23 @@ const Home = () => {
 
   return (
     <div>
-      <div className="flex p-5 align-middle shadow-lg rounded-lg">
+      <div className="flex p-5 shadow-lg rounded-lg">
         <div className="font-bold text-4xl">Home</div>
-        <button
-          onClick={toCreate}
-          className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto px-5"
-        >
-          Create
-        </button>
+        <div className="flex ml-auto">
+          <button
+            className="border-solid border-gray-600 border rounded p-2 mr-5 ml-auto px-5"
+            onClick={edit}
+          >
+            Edit
+          </button>
+          <button
+            onClick={toCreate}
+            className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto px-5"
+          >
+            Create
+          </button>
+        </div>
       </div>
-
       {documents.map((document) => {
         return (
           <div>

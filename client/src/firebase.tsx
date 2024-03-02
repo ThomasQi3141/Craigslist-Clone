@@ -7,12 +7,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAJ1ugLPM3JqvBQgYxAIWW2NcqhFd4LoOg",
-  authDomain: "craigslist-clone-2.firebaseapp.com",
-  projectId: "craigslist-clone-2",
-  storageBucket: "craigslist-clone-2.appspot.com",
-  messagingSenderId: "577441433961",
-  appId: "1:577441433961:web:f2ea45d26ad2eda9aed5f8",
+  apiKey: "AIzaSyBOqY50GKa9HIKjK6YNKjfNbaZS9Sot2a8",
+  authDomain: "craigslist-clone-3.firebaseapp.com",
+  projectId: "craigslist-clone-3",
+  storageBucket: "craigslist-clone-3.appspot.com",
+  messagingSenderId: "731691102235",
+  appId: "1:731691102235:web:a9a3ad02bf74aa08ce08be",
 };
 
 // Initialize Firebase
