@@ -31,11 +31,6 @@ const Home = () => {
     }
   };
 
-  // if (typeof window !== "undefined") {
-  //   fetchDocuments();
-  //   forceUpdate();
-  //   console.log("page refreshed");
-  // }
   useEffect(() => {
     // Call the fetchDocuments function when the component mounts
     fetchDocuments();
