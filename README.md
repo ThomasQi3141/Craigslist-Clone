@@ -1,6 +1,8 @@
 <h2>Craigslist Clone</h2></br>
 
-A Craigslist-like listing website created using React and Firebase. Hosted using AWS Amplify. 
+A Craigslist-like listing website created using React and Firebase. Hosted using AWS Amplify. </ br>
+
+Live Link: https://dev.dkxop0kmabnj8.amplifyapp.com/
 
 ### Features: <br/>
 <ul>
