@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { storage } from "../firebase";
-import { ref, uploadBytes, uploadString } from "firebase/storage";
+import { storage, firestoreDB } from "../firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
@@ -37,15 +38,33 @@ const Create = () => {
       return;
     }
 
+    // add image url to JSON
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload);
-    const nameRef = ref(storage, `names/${name + v4()}`);
-    uploadString(nameRef, name);
-    const descriptionRef = ref(storage, `descriptions/${description + v4()}`);
-    uploadString(descriptionRef, description);
+    uploadBytes(imageRef, imageUpload).then((item) => {
+      getDownloadURL(item.ref).then((url) => {
+        uploadData(url);
+      });
+    });
+
+    const uploadData = async (url: string) => {
+      const dataToUpload = {
+        name: name,
+        description: description,
+        imageURL: url,
+      };
+      try {
+        const document = doc(firestoreDB, "Items", v4());
+        let dataUpdated = await setDoc(document, dataToUpload);
+        console.log("success");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     alert("Submission Successful");
     navigate("/");
   };
+
   return (
     <>
       <div className="p-5">

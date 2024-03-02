@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { storage } from "../firebase";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { firestoreDB } from "../firebase";
+import { getDocs } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 
 const Home = () => {
   //Navigate through webpages on click
@@ -10,21 +11,28 @@ const Home = () => {
     navigate("/create");
   };
 
-  const imageListRef = ref(storage, "images/");
-
-  const [nameList, setNameList] = useState([]);
-  const [descriptionList, setDescriptionList] = useState([]);
-  const [imageList, setImageList] = useState<string[]>([]);
+  const [documents, setDocuments] = useState<any[]>([]);
 
   useEffect(() => {
-    listAll(imageListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setImageList([...imageList, url]);
-        });
-      });
-    });
+    // Define a function to fetch documents
+    const fetchDocuments = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(firestoreDB, "Items"));
+        const documentsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setDocuments(documentsData);
+      } catch (error) {
+        console.error("Error fetching documents: ", error);
+      }
+    };
+
+    // Call the fetchDocuments function when the component mounts
+    fetchDocuments();
   }, []);
+
+  console.log(documents);
 
   return (
     <div>
@@ -32,14 +40,28 @@ const Home = () => {
         <div className="font-bold text-4xl">Home</div>
         <button
           onClick={toCreate}
-          className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto px-5 "
+          className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto px-5"
         >
           Create
         </button>
       </div>
 
-      {imageList.map((url) => {
-        return <img src={url} />;
+      {documents.map((document) => {
+        return (
+          <div className="image-div">
+            <div className="flex ">
+              <h2 className="text-2xl ml-auto">{document.name}</h2>
+              <p>{document.description}</p>
+            </div>
+            <div>
+              <img
+                src={document.imageURL}
+                width="200"
+                className="thumbnail-image rounded-lg"
+              />
+            </div>
+          </div>
+        );
       })}
     </div>
   );
