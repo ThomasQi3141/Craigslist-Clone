@@ -54,7 +54,7 @@ const Create = () => {
       };
       try {
         const document = doc(firestoreDB, "Items", v4());
-        let dataUpdated = await setDoc(document, dataToUpload);
+        await setDoc(document, dataToUpload);
         console.log("success");
       } catch (error) {
         console.log(error);
