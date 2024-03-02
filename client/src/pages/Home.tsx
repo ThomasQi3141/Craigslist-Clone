@@ -3,16 +3,17 @@ import { useState, useEffect } from "react";
 import { firestoreDB } from "../firebase";
 import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
+import Popup from "../components/Popup";
 
 const Home = () => {
   // Navigate through webpages on click
   const navigate = useNavigate();
-  const location = useLocation();
   // Navigates to create page
   const toCreate = () => {
     navigate("/create");
   };
   const [documents, setDocuments] = useState<any[]>([]);
+  const [trigger, setTrigger] = useState(false);
   // Define a function to fetch documents
   const fetchDocuments = async () => {
     try {
@@ -34,8 +35,6 @@ const Home = () => {
     fetchDocuments();
   }, []);
 
-  console.log(documents);
-
   return (
     <div>
       <div className="flex p-5 align-middle shadow-lg rounded-lg">
@@ -50,16 +49,29 @@ const Home = () => {
 
       {documents.map((document) => {
         return (
-          <div className="image-div flex">
-            <div className="absolute translate-x-80">
-              <h2 className="text-2xl ml-auto">{document.name}</h2>
-              <p className="mr-5">{document.description}</p>
-            </div>
-            <img
-              src={document.imageURL}
-              width="200"
-              className="thumbnail-image rounded-lg"
-            />
+          <div>
+            <a
+              onClick={() => {
+                setTrigger(true);
+                console.log("clicked");
+              }}
+            >
+              <div className="image-div flex">
+                <div className="absolute translate-x-80">
+                  <h2 className="text-2xl ml-auto">{document.name}</h2>
+                  <p className="mr-5">{document.description}</p>
+                </div>
+                <img
+                  src={document.imageURL}
+                  width="200"
+                  className="thumbnail-image rounded-lg"
+                />
+              </div>
+            </a>
+            <Popup trigger={trigger} setTrigger={setTrigger}>
+              <h3 className="font-bold">{document.name}</h3>
+              <p>{document.description}</p>
+            </Popup>
           </div>
         );
       })}
