@@ -17,6 +17,7 @@ A Craigslist-like listing website created using React and Firebase. Hosted using
   <li><a href="https://firebase.google.com/">Firebase</a></li>
   <li><a href="https://reactrouter.com/en/main">React-Router</a></li>
   <li><a href="https://aws.amazon.com/amplify/?gclid=CjwKCAiAuYuvBhApEiwAzq_YiTlf-igHvPZCZCeH2ZJGWXeH1NJf8Hol5MVy4Q8nsUt6ormJZV0W5xoCZR0QAvD_BwE&trk=9eb02e4d-80e0-4f27-a621-b90b3c870bf3&sc_channel=ps&ef_id=CjwKCAiAuYuvBhApEiwAzq_YiTlf-igHvPZCZCeH2ZJGWXeH1NJf8Hol5MVy4Q8nsUt6ormJZV0W5xoCZR0QAvD_BwE:G:s&s_kwcid=AL!4422!3!651751060764!e!!g!!aws%20amplify!19852662236!145019201417">AWS Amplify</a></li>
+  <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
 </ul>
 
 ### Screenshots: <br/>
