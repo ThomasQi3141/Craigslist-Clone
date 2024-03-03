@@ -13,7 +13,9 @@ const Home = () => {
     navigate("/create");
   };
 
-  const edit = () => {};
+  const editListing = () => {
+    console.log("edit items");
+  };
 
   const [documents, setDocuments] = useState<any[]>([]);
   // const [trigger, setTrigger] = useState(false);
@@ -44,12 +46,6 @@ const Home = () => {
         <div className="font-bold text-4xl">Home</div>
         <div className="flex ml-auto">
           <button
-            className="border-solid border-gray-600 border rounded p-2 mr-5 ml-auto px-5"
-            onClick={edit}
-          >
-            Edit
-          </button>
-          <button
             onClick={toCreate}
             className="border-solid border-gray-600 border rounded p-2 mr-0 ml-auto px-5"
           >
@@ -60,23 +56,29 @@ const Home = () => {
       {documents.map((document) => {
         return (
           <div>
-            <a
-              onClick={() => {
-                setCurrentDocument(document);
-              }}
-            >
-              <div className="image-div flex">
-                <div className="absolute translate-x-80">
-                  <h2 className="text-2xl ml-auto">{document.name}</h2>
-                  <p className="mr-5">{document.description}</p>
-                </div>
+            <div className="image-div flex">
+              <div className="absolute translate-x-80">
+                <h2 className="text-2xl ml-auto">{document.name}</h2>
+                <p className="mr-5">{document.description}</p>
+              </div>
+              <a
+                onClick={() => {
+                  setCurrentDocument(document);
+                }}
+              >
                 <img
                   src={document.imageURL}
                   width="200"
                   className="thumbnail-image rounded-lg"
                 />
-              </div>
-            </a>
+              </a>
+              <button
+                className="border-solid border-gray-600 border rounded p-2 px-5"
+                onClick={editListing}
+              >
+                Edit
+              </button>
+            </div>
           </div>
         );
       })}
