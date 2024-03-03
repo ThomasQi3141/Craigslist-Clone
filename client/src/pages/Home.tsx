@@ -60,15 +60,13 @@ const Home = () => {
       const currentImageRef = ref(storage, editDoc.imageURL);
       const editImageRef = ref(storage, `images/${editImage.name + v4()}`);
       deleteObject(currentImageRef).then(() => {
-        uploadBytes(editImageRef, editImage).then(() => {
-          updateData({
-            ...editDoc,
-            imageURL: getDownloadURL(editImageRef),
-          }).then(() => {
-            fetchDocuments();
-            setEditDoc(null);
+        uploadBytes(editImageRef, editImage).then((item) => {
+          getDownloadURL(item.ref).then((url) => {
+            updateData({ ...editDoc, imageURL: url }).then(() => {
+              fetchDocuments();
+              setEditDoc(null);
+            });
           });
-          alert("Edited Successfully");
         });
       });
     }
@@ -101,7 +99,7 @@ const Home = () => {
   useEffect(() => {
     // Call the fetchDocuments function when the component mounts
     fetchDocuments();
-    console.log("Fetched");
+    console.log("Documents Fetched");
   }, []);
 
   return (
