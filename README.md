@@ -23,7 +23,7 @@ A Craigslist-like listing website created using React and Firebase. Hosted using
 ### Screenshots: <br/>
 
 
-<img width="500" alt="Screenshot 2024-03-02 at 11 15 34 PM" src="https://github.com/ThomasQi3141/Project-TQZXKQ/assets/131242218/c4cf52cb-6c92-4fee-bf77-ec7643ff4a97">
-<img width="500" alt="Screenshot 2024-03-02 at 11 15 57 PM" src="https://github.com/ThomasQi3141/Project-TQZXKQ/assets/131242218/22eda7e3-5d42-4d0d-9da9-10f856dbac2a">
-<img width="500" alt="Screenshot 2024-03-02 at 11 15 42 PM" src="https://github.com/ThomasQi3141/Project-TQZXKQ/assets/131242218/5acda8a8-e4d5-4a8f-a2c4-19dbde4a779e">
-<img width="500" alt="Screenshot 2024-03-02 at 11 15 49 PM" src="https://github.com/ThomasQi3141/Project-TQZXKQ/assets/131242218/9ba51ed6-7d56-4dd5-bbae-f5b819286b3b">
+<img width="800" alt="Screenshot 2024-03-02 at 11 15 34 PM" src="https://github.com/ThomasQi3141/Project-TQZXKQ/assets/131242218/c4cf52cb-6c92-4fee-bf77-ec7643ff4a97">
+<img width="800" alt="Screenshot 2024-03-02 at 11 15 57 PM" src="https://github.com/ThomasQi3141/Project-TQZXKQ/assets/131242218/22eda7e3-5d42-4d0d-9da9-10f856dbac2a">
+<img width="800" alt="Screenshot 2024-03-02 at 11 15 42 PM" src="https://github.com/ThomasQi3141/Project-TQZXKQ/assets/131242218/5acda8a8-e4d5-4a8f-a2c4-19dbde4a779e">
+<img width="800" alt="Screenshot 2024-03-02 at 11 15 49 PM" src="https://github.com/ThomasQi3141/Project-TQZXKQ/assets/131242218/9ba51ed6-7d56-4dd5-bbae-f5b819286b3b">
